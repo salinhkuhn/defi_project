@@ -82,12 +82,18 @@ function totalSupply() external view returns (uint){
 
 //added some extra functions 
 
-function allowMore() public {
-
+function allowMore(address spender, uint256 bonus) public {
+    require(spender != address(0),"invalid spender");
+    _allowed[msg.sender][spender]= _allowed[msg.sender][spender].add(bonus);
+    ///emit an event to track
+    emit Approval(msg.sender,spender, _allowed[msg.sender][spender]);
 }
 
-function allowLess() public {
-
+function allowLess(address spender, uint256 restrict ) public {
+     require(spender != address(0),"invalid spender");
+     _allowed[msg.sender][spender]= _allowed[msg.sender][spender].sub(restrict);
+    emit Approval(msg.sender,spender, _allowed[msg.sender][spender]);
+}
 }
 
 function buyAMatcha(address to, uint256 price) public returns (Bool) {
@@ -97,5 +103,22 @@ function buyAMatcha(address to, uint256 price) public returns (Bool) {
     transferFrom(msg.sender, to, price);
     return true;
 }
+function allowToSpendOnMatcha(address to)public returns (Bool){
+    require(to !=address(0));
+    allowMore(to, 8);
+    return true;
+}
+
+///here another tries to change the token name but only allow this if he owns more than half the tokens 
+function changeTokenName(address candidate, string newName)public returns (Bool){
+    require(candidate !=address(0));
+    require(_balances[candidate]> _totalSupply*0.5, "Don't own majority");
+    name= _setName(newName);
+    return true;
+}
+function _setName(string change) private {
+    name=change;
+}
+
 
 }
