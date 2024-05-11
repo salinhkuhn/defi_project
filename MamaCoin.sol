@@ -8,7 +8,7 @@ import "SafeMath.sol";
 contract SarahKhushiiCoin is IERC20{
     using SafeMath for uint256; ///wanna adapt this to the actual ints we are using.
 
-    string public constant name = 'MatchaCoin';
+    string public  name = 'MatchaCoin'; //i removed the constant such that we can set a new name in a function 
     string public constant symbol = 'MaMa';
     uint8 public constant decimals = 3;
     uint  public  _totalSupply = 40*10**6; ///SUPPLY OF 4O Million
@@ -84,41 +84,39 @@ function totalSupply() external view returns (uint){
 
 function allowMore(address spender, uint256 bonus) public {
     require(spender != address(0),"invalid spender");
-    _allowed[msg.sender][spender]= _allowed[msg.sender][spender].add(bonus);
+    _allowance[msg.sender][spender]= _allowance[msg.sender][spender].add(bonus);
     ///emit an event to track
-    emit Approval(msg.sender,spender, _allowed[msg.sender][spender]);
+    emit Approval(msg.sender,spender, _allowance[msg.sender][spender]);
 }
 
 function allowLess(address spender, uint256 restrict ) public {
      require(spender != address(0),"invalid spender");
-     _allowed[msg.sender][spender]= _allowed[msg.sender][spender].sub(restrict);
-    emit Approval(msg.sender,spender, _allowed[msg.sender][spender]);
-}
+     _allowance[msg.sender][spender]= (_allowance[msg.sender][spender]).sub(restrict);
+    emit Approval(msg.sender,spender, _allowance[msg.sender][spender]);
 }
 
-function buyAMatcha(address to, uint256 price) public returns (Bool) {
+function buyAMatcha(address to, uint256 price) public returns (bool) {
     ///matcha should always be less than 8 fr
     require(price<= 8.0, "don't buy it, it's to expensive rather go to Joeys");
     require(to !=address(0));
     transferFrom(msg.sender, to, price);
     return true;
 }
-function allowToSpendOnMatcha(address to)public returns (Bool){
+function allowToSpendOnMatcha(address to)public returns (bool){
     require(to !=address(0));
     allowMore(to, 8);
     return true;
 }
 
 ///here another tries to change the token name but only allow this if he owns more than half the tokens 
-function changeTokenName(address candidate, string newName)public returns (Bool){
+function changeTokenName(address candidate, string memory  newName)public returns (bool){
     require(candidate !=address(0));
-    require(_balances[candidate]> _totalSupply*0.5, "Don't own majority");
+    require(_balances[candidate]> _totalSupply/2, "Don't own majority");
     name= _setName(newName);
     return true;
 }
-function _setName(string change) private {
+function _setName(string memory  change) internal returns (string memory)  {
     name=change;
+    return name;
 }
-
-
 }
