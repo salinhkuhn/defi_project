@@ -44,11 +44,11 @@ We first saved addresses which are accessed frequently in global variables. Then
 
 After implementing PoolBalance we continued with MaxSwap, which atomically executes a trade. As stated in the task our function MaxSwap only return successfully if all the trades where successfully, hence the condition “at most valOfC” holds.
 To guarantee such an atomic execution we first preprocessed our “data”. We checked 4 points:
-  1.) pair A-B and B-C must exist
-        2.) sender must have at least valA of token A -> would say that is als the condition for the user to even call the function 
-        3.) router / factory should be allowed to spend valA of the token A 
+  1.) pair A-B and B-C must exist  
+2.) sender must have at least valA of token A -> would say that is als the condition for the user to even call the function  
+3.) router / factory should be allowed to spend valA of the token A  
 -> approval
-        4.) finally we check that the amount of c we get out doesn’t cross our valOfC restriction
+4.) finally we check that the amount of c we get out doesn’t cross our valOfC restriction  
 If all of these conditions hold we again used the methods provided by the interface and executed the trades. Finally, we checked once again if the restrictions are not violated.
 If a user wants to execute trades using the MaxSwap function only the approval for spending valA of token A must be done, hence to user only has to allow the smartContract to spend valA of token A of the users balance.
 	
