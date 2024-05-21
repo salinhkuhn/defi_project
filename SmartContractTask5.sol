@@ -60,7 +60,7 @@ import "DefiClass-main/interfaces/IPair.sol";
         uint256 senderBalanceOfA=IERC20(A).balanceOf(sender);
         require(valA<=senderBalanceOfA,'Sender does not have enough balance of token A');
 
-        //3.) check router and factoryy are allowed to send to this contract aka from sender to contract  
+        //3.) check router and factoryy are allowed to send to this contract + especially allow the smartconract to spend token A from the sender  
         require(IERC20(A).allowance(msg.sender, thisContract)>=valA,'Are not allowed to send valA to this contract');  
 
         //4.) check that if I  would execute the contract the ouput would maximal be valC of token C
