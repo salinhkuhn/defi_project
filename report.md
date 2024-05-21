@@ -1,29 +1,29 @@
-##Defi Project Report:
+## Defi Project Report:
 
 Ethereum address associated with the group (i.e., the address used with the faucet which funded all transactions below):
 
 ----still have to add---------
 
-#Question 1 (4 points)
+# Question 1 (4 points)
 a1.) Token address:
 a.) Token name: TheMatchaCoin
 b.) Token source code (.Sol) : insert directly
 c.) Short description of extra functionality of the token:
 	As all our group member love the meet up at a cafés and get a matcha we personalized our token such it supports buying a matcha. We have a function that exactly transfer the amount of money needed for matcha at our favourite café. Additionally, our token supports an extra function to transfer the amount needed for a matcha, hence gift a matcha. As those function are not that complex we also implemented a function which allows to change the token name but only if one owns more than half of the token supply.
 
-#Question 2 (--no points--)
+# Question 2 (--no points--)
 
-#Question 3 (3 points)
+# Question 3 (3 points)
 
 a.) Name of other token in the pair
 b.) Pair contract address
 
-#Question 4 (3 points)
+# Question 4 (3 points)
 
 a.) Name of token(s) used to trade for DEFI tokens (separated by comma if more than one)
 b.) Amount of tokens needed for the trade
 
-#Question 5 (10 points)
+# Question 5 (10 points)
 
 a.) Contract address: 0x9519f326A66CCB392b450eb8e7cEe041999d54F9
 a./b.) Contract source code with both functions (.Sol): will add directly 
@@ -43,7 +43,7 @@ If a user wants to execute trades using the MaxSwap function only the approval f
 
 
 
-#Question 6 (possible .25 extra on final exercise grade)
+# Question 6 (possible .25 extra on final exercise grade)
 Short description of tactic used to get more WETH (e.g., manual steps or programmed a bot)
 (optional) insert a file with source code used
 
