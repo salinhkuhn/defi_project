@@ -28,9 +28,9 @@ Pair contract address:0x4123376399c6021bD66a1B96E79779F66dB8c978 we used the fac
 ## Question 4 (3 points)
 
 ### a.) 
-Name of token(s) used to trade for DEFI tokens (separated by comma if more than one)
+Name of token(s) used to trade for DEFI tokens (separated by comma if more than one) WETH
 ### b.) 
-Amount of tokens needed for the trade
+Amount of tokens needed for the trade: 1201661171417572523
 
 ## Question 5 (10 points)
 
