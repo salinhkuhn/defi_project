@@ -23,7 +23,7 @@ Short description of extra functionality of the token:
 Name of other token in the pair: WETH
 
 ### b.) 
-Pair contract address:0x4123376399c6021bD66a1B96E79779F66dB8c978
+Pair contract address:0x4123376399c6021bD66a1B96E79779F66dB8c978 we used the factory function getPair for this.
 
 ## Question 4 (3 points)
 
