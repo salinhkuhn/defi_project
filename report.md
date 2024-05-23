@@ -20,10 +20,10 @@ Short description of extra functionality of the token:
 ## Question 3 (3 points)
 
 ### a.) 
-Name of other token in the pair
+Name of other token in the pair: WETH
 
 ### b.) 
-Pair contract address
+Pair contract address:0x4123376399c6021bD66a1B96E79779F66dB8c978
 
 ## Question 4 (3 points)
 
