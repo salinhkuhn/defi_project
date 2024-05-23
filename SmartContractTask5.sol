@@ -29,6 +29,7 @@ import "DefiClass-main/interfaces/IPair.sol";
         require(addressOfPoolOfPair != address(0), 'Invalid trading pair'); //adress 0x00000000 would be an invalid pair hence we dont want that 
         
         //read out the balances using the methods provded via the interface
+        //using:(dont need thrid variable function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
         (balanceOfA, balanceOfB, ) = IUniswapV2Pair(addressOfPoolOfPair).getReserves();
     }
 
@@ -49,7 +50,7 @@ import "DefiClass-main/interfaces/IPair.sol";
         //addresses I use over and over 
         address thisContract=address(this);
         address sender=msg.sender;
-
+        uint deadline= block.timestamp +45000; //set this more or less randomly, is in seconds 15*3, time stampt of the block if needed 
         //1.) check that the trading pairs exist
         address A_pair_B=IUniswapV2Factory(factory).getPair(A, B);
         address B_pair_C=IUniswapV2Factory(factory).getPair(B, C);
@@ -80,13 +81,12 @@ import "DefiClass-main/interfaces/IPair.sol";
         //give approval to perform the swaps
         IERC20(A).approve(router, valA);
         IERC20(A).approve(factory, valA);
-        //official start it by providng this contract with enough balance
-        IERC20(A).transferFrom(msg.sender, thisContract, valA); // we checked it earlier so should be fine
 
         //SWAP using function: swapExactTokensForTokens(uint amountIn,uint amountOutMin,address[] calldata path,address to,uint deadline) external returns (uint[] memory amounts);
-        uint deadline= block.timestamp +45000; //set this more or less randomly, is in seconds 15*3
-        uint[] memory finalOutputOfTheTrade = IUniswapV2Router01(router).swapExactTokensForTokens(valA,0, trades, msg.sender ,deadline);
+         //official start it by providng this contract with enough balance
+        IERC20(A).transferFrom(msg.sender, thisContract, valA); // we checked it earlier so should be fine
 
+        uint[] memory finalOutputOfTheTrade = IUniswapV2Router01(router).swapExactTokensForTokens(valA,0, trades, msg.sender ,deadline);
         uint finalCOut= finalOutputOfTheTrade[2];
         require(finalCOut <= valC, 'Still got more than valC when executed f.eg because a front-runner.....');
     }
