@@ -6,7 +6,7 @@ Ethereum address associated with the group (i.e., the address used with the fauc
 
 ## Question 1 (4 points)
 ### a1.) 
-Token address:
+Token address: 0x54ce9eB30c9973b34fc1C3Fa8fd5a3620ba4D6e3
 ### a.) 
 Token name: TheMatchaCoin
 ### b.) 
