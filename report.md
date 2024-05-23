@@ -23,7 +23,7 @@ Short description of extra functionality of the token:
 Name of other token in the pair: WETH
 
 ### b.) 
-Pair contract address:0x4123376399c6021bD66a1B96E79779F66dB8c978 we used the factory function getPair for this.
+Pair contract address:0x4123376399c6021bD66a1B96E79779F66dB8c978 we used the factory function getPair to get this.
 
 ## Question 4 (3 points)
 
@@ -31,6 +31,7 @@ Pair contract address:0x4123376399c6021bD66a1B96E79779F66dB8c978 we used the fac
 Name of token(s) used to trade for DEFI tokens (separated by comma if more than one) WETH
 ### b.) 
 Amount of tokens needed for the trade: 1201661171417572523
+(Pool address of the Matcha Token Defi Pool :  0x3689dF9421918f66e80a18A742F1B1d51CE9d5Ad)
 
 ## Question 5 (10 points)
 
