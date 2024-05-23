@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
-
-import "DefiClass-main/interfaces/IERC20.sol";
-import "SafeMath.sol";
-
+//literally just imported everything to be safe......
+import 'DefiClass-main/interfaces/IERC20.sol';
+import './SafeMath.sol';
 
 ///copied the provided ERC20 token contract 
 contract TheMatchaCoin is IERC20{
@@ -12,11 +11,11 @@ contract TheMatchaCoin is IERC20{
     string public  name = 'MatchaCoin'; //i removed the constant such that we can set a new name in a function 
     string public constant symbol = 'MC';
     uint8 public constant decimals = 3;
-    uint  public  _totalSupply = 400000*10**6; ///SUPPLY OF 4O Million
+    uint  public  _totalSupply = 40000000*10**3; ///SUPPLY OF 4O'000
     
     ///changed this function to private as I dont see any reayon for them to be public, will only call the from within the contract
-    mapping(address => uint) private  _balances;
-    mapping(address => mapping(address => uint)) private _allowance;
+    mapping(address => uint) public  _balances;
+    mapping(address => mapping(address => uint)) public _allowance;
     
 
     //did not change this so we can let it be taken from the interface, no need to have it here 
